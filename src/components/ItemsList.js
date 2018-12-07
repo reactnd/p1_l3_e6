@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Item from './Item'
 
- class ItemsList extends Component {
-  static propTypes = {
-    prop: PropTypes,
-    items: PropTypes.array.isRequired
-  };
-
-  render() {
-    const { items } = this.props;
+const ItemsList = props => {
+    const { items } = props;
     return (
       <div>
         <p className="items">Items</p>
         <ol className="item-list">
           {items.map((item, index) => (
-            <li key={index}>{item}</li>
+            <Item key={index} item={item} />
           ))}
         </ol>
       </div>
     );
   }
-}
 
-export default ItemsList
+ItemsList.propTypes = {
+  items: PropTypes.array.isRequired
+};
+
+export default ItemsList;
